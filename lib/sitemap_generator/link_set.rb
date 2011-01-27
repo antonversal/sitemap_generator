@@ -10,7 +10,7 @@ module SitemapGenerator
     attr_reader :default_host, :public_path, :sitemaps_path
     attr_accessor :sitemap, :sitemap_index
     attr_accessor :verbose, :yahoo_app_id
-
+    attr_accessor :filename
     # Evaluate the sitemap config file and write all sitemaps.
     #
     # The Sitemap Interpreter includes the URL helpers and API methods
@@ -164,7 +164,7 @@ module SitemapGenerator
     #
     # The index depends on the length of the <tt>sitemaps</tt> array.
     def new_sitemap_path
-      File.join(self.sitemaps_path || '', "#{FILE_NAME}#{self.sitemap_index.sitemaps.length + 1}.xml.gz")
+      File.join(self.sitemaps_path || '', "#{self.filename}#{self.sitemap_index.sitemaps.length + 1}.xml.gz")
     end
 
     # Return the current sitemap index filename.
@@ -172,7 +172,7 @@ module SitemapGenerator
     # At the moment we only support one index file which can link to
     # up to 50,000 sitemap files.
     def sitemap_index_path
-      File.join(self.sitemaps_path || '', "#{FILE_NAME}_index.xml.gz")
+      File.join(self.sitemaps_path || '', "#{self.filename}_index.xml.gz")
     end
   end
 end
