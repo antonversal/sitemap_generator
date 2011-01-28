@@ -22,10 +22,10 @@ module SitemapGenerator
       require 'sitemap_generator/interpreter'
 
       start_time = Time.now
-      if self.sitemap_index.finalized?
+#      if self.sitemap_index.finalized?
         self.sitemap_index = SitemapGenerator::Builder::SitemapIndexFile.new(@public_path, sitemap_index_path)
         self.sitemap = SitemapGenerator::Builder::SitemapFile.new(@public_path, new_sitemap_path)
-      end
+#      end
 
       SitemapGenerator::Interpreter.new(self, &block)
       unless self.sitemap.finalized?
@@ -62,8 +62,8 @@ module SitemapGenerator
       end
 
       # Default host is not set yet.  Set it on these objects when `add_links` is called
-      self.sitemap_index = SitemapGenerator::Builder::SitemapIndexFile.new(@public_path, sitemap_index_path)
-      self.sitemap = SitemapGenerator::Builder::SitemapFile.new(@public_path, new_sitemap_path)
+#      self.sitemap_index = SitemapGenerator::Builder::SitemapIndexFile.new(@public_path, sitemap_index_path)
+#      self.sitemap = SitemapGenerator::Builder::SitemapFile.new(@public_path, new_sitemap_path)
     end
 
     # Entry point for users.
